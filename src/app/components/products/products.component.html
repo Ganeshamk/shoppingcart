@@ -27,7 +27,7 @@
 </div>
 
 <div class="products-block">
-  <div class="row" *ngIf="products?.length > 0">
+  <div class="row" *ngIf="products?.length > 0; else noDataFound">
     <div class="products" *ngFor="let product of products;let i = index">
       <div class="product-card">
         <div class="product-img-block" (click)="gotoProductDetails(product)">
