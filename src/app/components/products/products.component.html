@@ -1,0 +1,66 @@
+<div class="page-title">
+  <label>Products</label>
+</div>
+
+<div class="row">
+  <div class="search-block">
+    <input class="serachbox" type="text" placeholder="Enter product name..." [(ngModel)]="searchText"
+      (ngModelChange)="searchTextChange($event)" />
+    <span class="clear" (click)="clearSearchText()" *ngIf="searchText"><i class="fa fa-times"></i></span>
+  </div>
+  <div class="spacer"></div>
+  <div class="filter">
+    <span class="" (clickOutside)="onClickedOutside($event)">
+      <button class="filter-btn" (click)="filterBtn()">
+        <i class="fa fa-filter"></i>
+        <i class="active" *ngIf="isApplyFilter"></i>
+      </button>
+      <div class="categories" *ngIf="isDispalyCategories">
+        <label class="category-title">Categories</label>
+        <label class="row category-item" *ngFor="let category of categories">
+          <input type="checkbox" [(ngModel)]="category.status" (change)="applyFilter()">
+          <span class="category-text">{{category?.name}}</span>
+        </label>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="products-block">
+  <div class="row" *ngIf="products?.length > 0">
+    <div class="products" *ngFor="let product of products;let i = index">
+      <div class="product-card">
+        <div class="product-img-block" (click)="gotoProductDetails(product)">
+          <img class="product-img" src={{product?.imgUrl}} width="100%">
+        </div>
+        <div class="product-content">
+          <div tooltip={{product?.name}} placement="bottom" show-delay="500">
+            <strong>Name</strong>: {{product?.name | ellipsisPipe:20}}
+          </div>
+          <div>
+            <strong>Price</strong>: {{product?.price | currency}}
+          </div>
+          <span class="category">{{product?.category}}</span>
+        </div>
+        <button (click)="addToCart(product, i)" class="add-to-cart" *ngIf="product?.quantity <= 0">
+          Add to Cart
+        </button>
+        <div class="product-qty" *ngIf="product?.quantity > 0">
+          <button class="qty-btn qty-dec" (click)="changeQuantity(product, 'dec', i)">
+            <i class="fa fa-minus"></i>
+          </button>
+          <span class="product-quantity">{{product?.quantity}}</span>
+          <button class="qty-btn qty-inc" (click)="changeQuantity(product, 'inc', i)">
+            <i class="fa fa-plus"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noDataFound>
+    <div class="empty">
+      No Products Data
+    </div>
+  </ng-template>
+</div>

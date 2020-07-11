@@ -1,0 +1,12 @@
+<div class="toolbar" role="banner">
+  <a [routerLink]="['/']" routerLinkActive="router-link-active">
+    <img alt="Logo" class="logo"
+      src="https://www.infrrd.ai/hs-fs/hubfs/Infrrd-Logo-White-Transparent.png?width=200&name=Infrrd-Logo-White-Transparent.png" />
+  </a>
+
+  <span class="name">Shopping Cart</span>
+  <div class="spacer"></div>
+  <a class="cart" [routerLink]="['/cart']" [routerLinkActive]="['cart-active']">
+    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+  </a>
+</div>

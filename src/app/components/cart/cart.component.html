@@ -1,0 +1,40 @@
+<div class="row ">
+  <div class="cart-block" *ngIf="cartItems?.length > 0; else noDataFound">
+    <div class="page-title my-cart">My Cart ({{cartItems?.length}})</div>
+    <div class="cart-items" *ngFor="let item of cartItems;let i = index">
+      <div class="row cart-item">
+        <div class="product-img-block" [routerLink]="['/productDetails',item.productId]"
+          routerLinkActive="router-link-active">
+          <img src={{item?.imgUrl}} class="product-img" />
+        </div>
+        <div class="product-content">
+          <div class="product-name"> {{item?.name | ellipsisPipe:20}}</div>
+          <div class="product-price"> {{item?.price | currency}}</div>
+          <small class="product-categoty"> {{item?.category}}</small>
+        </div>
+        <div class="spacer"></div>
+        <div class="product-qty">
+          <div class="quantity-block">
+            <button class="qty-btn qty-dec" (click)="changeQuantity(item, 'dec', i)">-</button>
+            <span class="product-quantity">{{item?.quantity}}</span>
+            <button class="qty-btn qty-inc" (click)="changeQuantity(item, 'inc', i)">+</button>
+          </div>
+          <div class="product-amount"><strong>{{(item?.price * item?.quantity) | currency}}</strong></div>
+        </div>
+
+        <i class="fa fa-times cart-remove" (click)="removeItem(i)"></i>
+      </div>
+    </div>
+    <div class="total-amount" *ngIf="totalAmount">
+      <label><strong>Total Amount: {{ totalAmount | currency }}</strong></label>
+    </div>
+  </div>
+
+  <ng-template #noDataFound>
+    <div class="empty">
+      <label>
+        No Cart Data Found
+      </label>
+    </div>
+  </ng-template>
+</div>
