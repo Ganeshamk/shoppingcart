@@ -119,4 +119,9 @@
 
 .my-cart {
   border-bottom: 1px solid #c0c0c06b;
+  font-size: 20px !important;
+}
+
+.amount {
+  color: mediumblue;
 }

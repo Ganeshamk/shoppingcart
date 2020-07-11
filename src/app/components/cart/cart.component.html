@@ -26,7 +26,7 @@
       </div>
     </div>
     <div class="total-amount" *ngIf="totalAmount">
-      <label><strong>Total Amount: {{ totalAmount | currency }}</strong></label>
+      <label><strong>Total Amount: <span class="amount">{{ totalAmount | currency }}</span></strong></label>
     </div>
   </div>
 

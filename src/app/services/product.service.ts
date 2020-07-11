@@ -5,7 +5,6 @@ import { promise } from 'protractor';
   providedIn: 'root'
 })
 export class ProductService {
-  cartItems: any[] = [];
   products: any[] = [
     {
       productId: 'INF001',
@@ -131,29 +130,31 @@ export class ProductService {
 
   constructor() {
     localStorage.setItem("products", JSON.stringify(this.products));
-    this.cartItems = JSON.parse(localStorage.getItem("cartItems"));
   }
 
   getProducts() {
+    let products = JSON.parse(localStorage.getItem("products"));
     return new Promise(resolve => {
-      resolve(this.products);
+      resolve(products);
     });
   }
 
   getProductDetailsById(productId: any) {
+    let products = JSON.parse(localStorage.getItem("products"));
     return new Promise(resolve => {
-      let index = this.products.findIndex(product => {
+      let index = products.findIndex(product => {
         return product.productId === productId;
       });
       if (index >= 0) {
-        resolve(this.products[index]);
+        resolve(products[index]);
       }
     });
   }
 
   getCartItems() {
+    let cartItems = JSON.parse(localStorage.getItem("cartItems"));
     return new Promise(resolve => {
-      resolve(this.cartItems);
+      resolve(cartItems);
     });
   }
 }
