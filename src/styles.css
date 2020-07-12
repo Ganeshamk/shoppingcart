@@ -64,3 +64,9 @@ p {
   font-weight: 900;
   padding: 10px;
 }
+
+@media screen and (min-width:768px) {
+  .page-title {
+    text-align: left !important;
+  }
+}
