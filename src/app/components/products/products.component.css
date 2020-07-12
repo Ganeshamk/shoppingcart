@@ -188,12 +188,18 @@
 .category-text {
   text-align: left;
   margin-left: 5px;
-  min-width: 100px;
+  min-width: 150px;
+  cursor: pointer;
 }
 
 .category-item {
   padding: 10px;
   border-bottom: 1px solid #c0c0c0;
+}
+
+.category-item:hover {
+  background: #c0c0c0;
+  color: #1b348f;
 }
 
 .category-item:last-child {

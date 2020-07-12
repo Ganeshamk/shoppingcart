@@ -5,9 +5,9 @@
       <img class="product-img" src={{productDetails?.imgUrl}} />
     </div>
     <div class="product-info">
-      <label class="product-name"><strong>Name:</strong>{{productDetails?.name}}</label>
-      <label class="product-price"><strong>Price:</strong>{{productDetails?.price | currency}}</label>
-      <label class="product-category"><strong>Category:</strong>{{productDetails?.category}}</label>
+      <label class="product-name"><strong>Name: </strong>{{productDetails?.name}}</label>
+      <label class="product-price"><strong>Price: </strong>{{productDetails?.price | currency}}</label>
+      <label class="product-category"><strong>Category: </strong>{{productDetails?.category}}</label>
 
       <button (click)="addToCart()" class="add-to-cart" *ngIf="productDetails?.quantity <= 0">
         Add to Cart
