@@ -14,6 +14,7 @@ export class ProductsComponent implements OnInit {
   categories: any[] = [];
   isDispalyCategories: boolean = false;
   searchText: any;
+  isSort: boolean = true;
 
   constructor(private productService: ProductService,
     private router: Router) { }

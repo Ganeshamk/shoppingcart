@@ -11,6 +11,9 @@
   <div class="spacer"></div>
   <div class="filter">
     <span class="" (clickOutside)="onClickedOutside($event)">
+      <button class="sort-btn" (click)="isSort = !isSort">
+        Sort <i class="fa" [ngClass]="isSort ? 'fa-arrow-down' : 'fa-arrow-up'"></i>
+      </button>
       <button class="filter-btn" (click)="filterBtn()">
         <i class="fa fa-filter"></i>
         <i class="active" *ngIf="isApplyFilter"></i>
@@ -28,7 +31,7 @@
 
 <div class="products-block">
   <div class="row" *ngIf="products?.length > 0; else noDataFound">
-    <div class="products" *ngFor="let product of products;let i = index">
+    <div class="products" *ngFor="let product of products | orderBy: 'name': isSort ? 'asc' : 'desc';let i = index ">
       <div class="product-card">
         <div class="product-img-block" (click)="gotoProductDetails(product)">
           <img class="product-img" src={{product?.imgUrl}} width="100%">
