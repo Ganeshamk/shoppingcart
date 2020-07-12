@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
-
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -15,6 +14,7 @@ export class CartComponent implements OnInit {
     this.getCartData();
   }
 
+  /* get all cart data */
   getCartData() {
     this.productService.getCartItems().then((cartItems: any) => {
       if (cartItems) {
@@ -24,6 +24,7 @@ export class CartComponent implements OnInit {
     });
   }
 
+  /* change product quantity */
   changeQuantity(item: any, status: any, index: number) {
     if (status === 'dec') {
       this.cartItems[index].quantity -= 1;
@@ -36,16 +37,19 @@ export class CartComponent implements OnInit {
     this.updateCartData();
   }
 
+  /* remove cart item */
   removeItem(index) {
     this.cartItems.splice(index, 1);
     this.updateCartData();
   }
 
+  /* update cart data */
   updateCartData() {
     this.getTotalAmount();
     localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
   }
 
+  /* calculate total amount */
   getTotalAmount() {
     if (this.cartItems) {
       this.totalAmount = 0;

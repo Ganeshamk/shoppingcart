@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { promise } from 'protractor';
-
 @Injectable({
   providedIn: 'root'
 })
+
 export class ProductService {
   products: any[] = [
     {
@@ -172,6 +172,7 @@ export class ProductService {
     localStorage.setItem("products", JSON.stringify(this.products));
   }
 
+  /* get all products */
   getProducts() {
     let products = JSON.parse(localStorage.getItem("products"));
     return new Promise(resolve => {
@@ -179,6 +180,7 @@ export class ProductService {
     });
   }
 
+  /* get product details by product id */
   getProductDetailsById(productId: any) {
     let products = JSON.parse(localStorage.getItem("products"));
     return new Promise(resolve => {
@@ -191,6 +193,7 @@ export class ProductService {
     });
   }
 
+  /* get cart details */
   getCartItems() {
     let cartItems = JSON.parse(localStorage.getItem("cartItems"));
     return new Promise(resolve => {
@@ -198,6 +201,7 @@ export class ProductService {
     });
   }
 
+  /* scroll to top */
   gotoTop() {
     window.scroll({
       top: 0,

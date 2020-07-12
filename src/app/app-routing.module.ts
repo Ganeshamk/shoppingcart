@@ -21,9 +21,9 @@ const routes: Routes = [
     loadChildren: () => import('./components/cart/cart.module').then(m => m.CartModule)
   }
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }

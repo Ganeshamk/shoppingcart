@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { ActivatedRoute } from '@angular/router';
-
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.css']
 })
+
 export class ProductDetailsComponent implements OnInit {
   productDetails: any;
   cartItems = [];
@@ -23,6 +23,7 @@ export class ProductDetailsComponent implements OnInit {
     });
   }
 
+  /* get product details by product id */
   getProductDetails(productId: any) {
     this.productService.getProductDetailsById(productId).then(product => {
       if (product) {
@@ -38,18 +39,21 @@ export class ProductDetailsComponent implements OnInit {
     });
   }
 
+  /* Add to cart  */
   addToCart() {
     this.productDetails.quantity = 1;
     this.cartItems.push(this.productDetails);
     localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
   }
 
+  /* find product position in the cart data  */
   findIndex() {
     return this.cartItems.findIndex(data => {
       return data.productId === this.productDetails.productId;
     });
   }
 
+  /* change product quantity */
   changeQuantity(status: any) {
     let cartDataIndex = this.findIndex();
     if (status === 'dec') {

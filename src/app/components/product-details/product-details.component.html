@@ -4,14 +4,15 @@
     <div class="product-img-block">
       <img class="product-img" src={{productDetails?.imgUrl}} />
     </div>
+
     <div class="product-info">
       <label class="product-name"><strong>Name: </strong>{{productDetails?.name}}</label>
       <label class="product-price"><strong>Price: </strong>{{productDetails?.price | currency}}</label>
       <label class="product-category"><strong>Category: </strong>{{productDetails?.category}}</label>
-
       <button (click)="addToCart()" class="add-to-cart" *ngIf="productDetails?.quantity <= 0">
         Add to Cart
       </button>
+
       <div class="product-qty" *ngIf="productDetails?.quantity > 0">
         <button class="qty-btn qty-dec" (click)="changeQuantity('dec')">
           <i class="fa fa-minus"></i>
@@ -21,14 +22,18 @@
           <i class="fa fa-plus"></i>
         </button>
       </div>
+
       <div class="total-amount" *ngIf="productDetails?.quantity">
         <label>
           <strong>Total Aomunt:</strong>
           {{(productDetails?.quantity*productDetails?.price) | currency}}
         </label>
       </div>
+
       <button *ngIf="productDetails?.quantity" class="goto-cart" [routerLink]="['/cart']"
-        routerLinkActive="router-link-active">Goto Cart</button>
+        routerLinkActive="router-link-active">
+        Goto Cart
+      </button>
     </div>
   </div>
 </div>

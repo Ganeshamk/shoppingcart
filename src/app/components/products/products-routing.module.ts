@@ -8,9 +8,9 @@ const routes: Routes = [
     component: ProductsComponent
   }
 ];
-
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
+
 export class ProductsRoutingModule { }

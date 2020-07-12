@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { Router } from '@angular/router';
-
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
+
 export class ProductsComponent implements OnInit {
   cartItems: any[] = [];
   productsData: any = [];
@@ -16,26 +16,29 @@ export class ProductsComponent implements OnInit {
   searchText: any;
   isSort: boolean = true;
 
-  constructor(private productService: ProductService,
-    private router: Router) { }
+  constructor(private productService: ProductService, private router: Router) { }
 
   ngOnInit() {
     this.getProducts();
   }
 
+  /* hide categories by clicking outside the categories block */
   onClickedOutside(event: any) {
     this.isDispalyCategories = false;
   }
 
+  /* toggle categories */
   filterBtn() {
     this.isDispalyCategories = !this.isDispalyCategories;
   }
 
+  /* clear search text */
   clearSearchText() {
     this.searchText = '';
     this.searchTextChange(this.searchText);
   }
 
+  /* filter products by product name */
   searchTextChange(event: any) {
     if (event) {
       this.products = this.productsData.filter(product => {
@@ -56,12 +59,14 @@ export class ProductsComponent implements OnInit {
     }
   }
 
+  /* checking filter applied or not */
   get isApplyFilter() {
     return this.categories.findIndex(category => {
       return category.status;
     }) < 0 ? false : true;
   }
 
+  /* filter products by category */
   applyFilter() {
     this.searchText = '';
     if (this.isApplyFilter) {
@@ -78,6 +83,7 @@ export class ProductsComponent implements OnInit {
     }
   }
 
+  /* get all products list  */
   getProducts() {
     this.productService.getProducts().then(productsData => {
       this.productsData = productsData;
@@ -95,6 +101,7 @@ export class ProductsComponent implements OnInit {
     });
   }
 
+  /* get cart items details  */
   getcartItems() {
     this.productService.getCartItems().then((cartItems: any) => {
       if (cartItems) {
@@ -115,30 +122,33 @@ export class ProductsComponent implements OnInit {
     });
   }
 
+  /* Add to cart  */
   addToCart(product: any, index: number) {
-    this.productsData[index].quantity = 1;
+    this.products[index].quantity = 1;
     this.cartItems.push(product);
     localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
   }
 
+  /* change product quantity */
   changeQuantity(product: any, status: any, index: number) {
     let cartDataIndex = this.cartItems.findIndex(data => {
       return data.productId === product.productId;
     });
     if (status === 'dec') {
-      this.productsData[index].quantity -= 1;
-      if (this.productsData[index].quantity === 0) {
+      this.products[index].quantity -= 1;
+      if (this.products[index].quantity === 0) {
         this.cartItems.splice(cartDataIndex, 1);
       } else {
-        this.cartItems[cartDataIndex].quantity = this.productsData[index].quantity;
+        this.cartItems[cartDataIndex].quantity = this.products[index].quantity;
       }
     } else {
-      this.productsData[index].quantity += 1;
-      this.cartItems[cartDataIndex].quantity = this.productsData[index].quantity;
+      this.products[index].quantity += 1;
+      this.cartItems[cartDataIndex].quantity = this.products[index].quantity;
     }
     localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
   }
 
+  /* goto product details page  */
   gotoProductDetails(product: any) {
     this.router.navigate(['productDetails', product.productId]);
   }

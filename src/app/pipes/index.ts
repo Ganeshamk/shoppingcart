@@ -6,9 +6,9 @@ export const PIPES = [
     EllipsisPipePipe,
     OrderByPipe
 ];
-
 @NgModule({
     declarations: PIPES,
     exports: PIPES
 })
+
 export class PipesModule { }
