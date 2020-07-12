@@ -27,7 +27,8 @@
           {{(productDetails?.quantity*productDetails?.price) | currency}}
         </label>
       </div>
-      <button class="goto-cart" [routerLink]="['/cart']" routerLinkActive="router-link-active">Goto Cart</button>
+      <button *ngIf="productDetails?.quantity" class="goto-cart" [routerLink]="['/cart']"
+        routerLinkActive="router-link-active">Goto Cart</button>
     </div>
   </div>
 </div>
