@@ -3,3 +3,7 @@
   <router-outlet></router-outlet>
 </div>
 <app-footer></app-footer>
+
+<div class="animated infinite scrollToTop" (click)="scrollToTop()" *ngIf="isShow">
+  <a style="color: #c0c0c0 !important"><i class="fa fa-angle-up fa-2x"></i></a>
+</div>

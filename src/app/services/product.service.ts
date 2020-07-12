@@ -16,6 +16,22 @@ export class ProductService {
     },
     {
       productId: 'INF002',
+      "imgUrl": "https://img.guess.com/image/upload/w_938,c_scale/f_auto,q_auto/fl_strip_profile/e_sharpen:50,q_auto:low/v1//EU/Style/ECOMM/SWLILSL0275-BLA",
+      "name": "LILLY LEATHER LUXE MINI WALLET",
+      "price": 70,
+      category: 'wallets',
+      quantity: 0
+    },
+    {
+      productId: 'INF003',
+      "imgUrl": "https://img.guess.com/image/upload/w_938,c_scale/f_auto,q_auto/fl_strip_profile/e_sharpen:50,q_auto:low/v1//EU/Style/ECOMM/H0YZ02WDXC0-JBLK",
+      "name": "FACE MASK KIDS",
+      "price": 10,
+      category: 'masks',
+      quantity: 0
+    },
+    {
+      productId: 'INF004',
       "imgUrl": "https://guesseu.scene7.com/is/image/GuessEU/FLGLO4FAL12-BEIBR?wid=700&amp;fmt=jpeg&amp;qlt=80&amp;op_sharpen=0&amp;op_usm=1.0,1.0,5,0&amp;iccEmbed=0",
       "name": "GLORIA HIGH LOGO SNEAKER",
       "price": 91,
@@ -23,7 +39,7 @@ export class ProductService {
       quantity: 0
     },
     {
-      productId: 'INF003',
+      productId: 'INF005',
       "imgUrl": "https://guesseu.scene7.com/is/image/GuessEU/HWVG6216060-TAN?wid=700&amp;fmt=jpeg&amp;qlt=80&amp;op_sharpen=0&amp;op_usm=1.0,1.0,5,0&amp;iccEmbed=0",
       "name": "CATE RIGID BAG",
       "price": 94.5,
@@ -31,7 +47,7 @@ export class ProductService {
       quantity: 0
     },
     {
-      productId: 'INF004',
+      productId: 'INF006',
       "imgUrl": "http://guesseu.scene7.com/is/image/GuessEU/WC0001FMSWC-G5?wid=520&fmt=jpeg&qlt=80&op_sharpen=0&op_usm=1.0,1.0,5,0&iccEmbed=0",
       "name": "GUESS CONNECT WATCH",
       "price": 438.9,
@@ -39,7 +55,7 @@ export class ProductService {
       quantity: 0
     },
     {
-      productId: 'INF005',
+      productId: 'INF007',
       "imgUrl": "https://guesseu.scene7.com/is/image/GuessEU/AW6308VIS03-SAP?wid=700&amp;fmt=jpeg&amp;qlt=80&amp;op_sharpen=0&amp;op_usm=1.0,1.0,5,0&amp;iccEmbed=0",
       "name": "70s RETRO GLAM KEFIAH",
       "price": 20,
@@ -47,7 +63,15 @@ export class ProductService {
       quantity: 0
     },
     {
-      productId: 'INF007',
+      productId: 'INF008',
+      "imgUrl": "https://img.guess.com/image/upload/w_938,c_scale/f_auto,q_auto/fl_strip_profile/e_sharpen:50,q_auto:low/v1//EU/Style/ECOMM/SWVG7583590-BLA",
+      "name": "ANNARITA LOGO WALLET",
+      "price": 55,
+      category: 'wallets',
+      quantity: 0
+    },
+    {
+      productId: 'INF009',
       "imgUrl": "https://img.guess.com/image/upload/w_938,c_scale/f_auto,q_auto/fl_strip_profile/e_sharpen:50,q_auto:low/v1//EU/Style/ECOMM/FM7GENFAL12-BROCR-ALT1",
       "name": "GENOVA 4G LOGO RUNNING SHOE",
       "price": 99,
@@ -55,7 +79,7 @@ export class ProductService {
       quantity: 0
     },
     {
-      productId: 'INF008',
+      productId: 'INF010',
       "imgUrl": "https://img.guess.com/image/upload/w_938,c_scale/f_auto,q_auto/fl_strip_profile/e_sharpen:50,q_auto:low/v1//EU/Style/ECOMM/HMDNPUP0324-BLA",
       "name": "DAN LA CROSSBODY",
       "price": 94.5,
@@ -63,7 +87,15 @@ export class ProductService {
       quantity: 0
     },
     {
-      productId: 'INF009',
+      productId: 'INF011',
+      "imgUrl": "https://img.guess.com/image/upload/w_938,c_scale/f_auto,q_auto/fl_strip_profile/e_sharpen:50,q_auto:low/v1//EU/Style/ECOMM/H0YZ02WDXC0-P0TR-ALT1",
+      "name": "FACE MASK KIDS 12",
+      "price": 12,
+      category: 'masks',
+      quantity: 0
+    },
+    {
+      productId: 'INF012',
       "imgUrl": "https://img.guess.com/image/upload/w_938,c_scale/f_auto,q_auto/fl_strip_profile/e_sharpen:50,q_auto:low/v1//EU/Style/ECOMM/GW0051FMSWC-G3",
       "name": "MULTIFUNCTION WATCH",
       "price": 199,
@@ -71,7 +103,7 @@ export class ProductService {
       quantity: 0
     },
     {
-      productId: 'INF012',
+      productId: 'INF013',
       "imgUrl": "https://img.guess.com/image/upload/w_938,c_scale/f_auto,q_auto/fl_strip_profile/e_sharpen:50,q_auto:low/v1//EU/Style/ECOMM/FM6GENLEA12-WHITE-ALT1",
       "name": "GENOVA REAL LEATHER RUNNING SHOE",
       "price": 94,
@@ -79,7 +111,15 @@ export class ProductService {
       quantity: 0
     },
     {
-      productId: 'INF013',
+      productId: 'INF014',
+      "imgUrl": "https://img.guess.com/image/upload/w_938,c_scale/f_auto,q_auto/fl_strip_profile/e_sharpen:50,q_auto:low/v1//EU/Style/ECOMM/SWSM7476460-COA",
+      "name": "LOGO CITY ALL-OVER PRINT WALLET",
+      "price": 75,
+      category: 'wallets',
+      quantity: 0
+    },
+    {
+      productId: 'INF015',
       name: 'DAN 4G LOGO PRINT MINI CROSSBODY',
       "imgUrl": "https://img.guess.com/image/upload/w_546,c_scale/f_auto,q_auto/fl_strip_profile/e_sharpen:50,q_auto:low/v1//EU/Style/ECOMM/HMDNLJP0224-BRO",
       "price": 94.5,
@@ -87,7 +127,7 @@ export class ProductService {
       quantity: 0
     },
     {
-      productId: 'INF014',
+      productId: 'INF016',
       "imgUrl": "https://img.guess.com/image/upload/w_938,c_scale/f_auto,q_auto/fl_strip_profile/e_sharpen:50,q_auto:low/v1//EU/Style/ECOMM/WW1256FMSWC-G1",
       "name": "MULTI-FUNCTION STITCH DETAIL WATCH",
       "price": 159,
@@ -119,7 +159,7 @@ export class ProductService {
       quantity: 0
     },
     {
-      productId: 'INF022',
+      productId: 'INF020',
       "imgUrl": "https://img.guess.com/image/upload/w_938,c_scale/f_auto,q_auto/fl_strip_profile/e_sharpen:50,q_auto:low/v1//EU/Style/ECOMM/FM7SALELE12-BLACK",
       "name": "SALERNO STUD SNEAKER",
       "price": 119,
@@ -154,7 +194,15 @@ export class ProductService {
   getCartItems() {
     let cartItems = JSON.parse(localStorage.getItem("cartItems"));
     return new Promise(resolve => {
-      resolve(cartItems);
+      resolve(cartItems ? cartItems : false);
+    });
+  }
+
+  gotoTop() {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
     });
   }
 }

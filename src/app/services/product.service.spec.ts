@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
-
 import { ProductService } from './product.service';
 
 describe('ProductService', () => {
+  let ProductDetails: any;
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {

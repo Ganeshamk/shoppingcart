@@ -96,7 +96,7 @@ export class ProductsComponent implements OnInit {
 
   getcartItems() {
     this.productService.getCartItems().then((cartItems: any) => {
-      if (cartItems.length > 0) {
+      if (cartItems) {
         cartItems.forEach(item => {
           if (item) {
             let index = this.productsData.findIndex(data => {
@@ -109,7 +109,6 @@ export class ProductsComponent implements OnInit {
           }
         });
         this.cartItems = cartItems;
-        this.products = this.productsData;
       }
       this.products = this.productsData;
     });

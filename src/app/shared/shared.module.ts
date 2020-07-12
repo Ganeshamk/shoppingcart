@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { PipesModule } from '../pipes';
@@ -21,6 +21,9 @@ import { TooltipModule } from 'ng2-tooltip-directive';
         CommonModule,
         ClickOutsideModule,
         TooltipModule
+    ],
+    schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
     ],
     providers: []
 })

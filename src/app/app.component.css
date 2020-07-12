@@ -1,3 +1,16 @@
 .content {
   margin: 60px 0;
 }
+
+.scrollToTop {
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  padding: 5px 10px;
+  z-index: 9999;
+  border: 1px solid #c0c0c0;
+  border-radius: 10px;
+  background: transparent;
+  mix-blend-mode: screen;
+  box-shadow: 1px 1px 2px black;
+}
