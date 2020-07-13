@@ -173,6 +173,7 @@ export class ProductService {
 
   constructor() {
     localStorage.setItem("products", JSON.stringify(this.products));
+    localStorage.setItem("cartItems", JSON.stringify([]));
   }
 
   /* get all products */
