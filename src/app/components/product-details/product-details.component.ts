@@ -32,7 +32,9 @@ export class ProductDetailsComponent implements OnInit {
           if (cartData && cartData.length > 0) {
             this.cartItems = cartData;
             let index = this.findIndex();
-            this.productDetails.quantity = this.cartItems[index].quantity;
+            if (index >= 0) {
+              this.productDetails.quantity = this.cartItems[index].quantity;
+            }
           } else {
             this.productDetails.quantity = 0;
           }

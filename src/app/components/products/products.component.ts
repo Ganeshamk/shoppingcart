@@ -134,7 +134,12 @@ export class ProductsComponent implements OnInit {
   }
 
   /* change product quantity */
-  changeQuantity(product: any, status: any) {
+  changeQuantity(product: any, status: any, index: any) {
+    if (status === 'inc') {
+      this.products[index].quantity += 1;
+    } else {
+      this.products[index].quantity -= 1;
+    }
     this.productService.changeQuantity(product, status);
   }
 

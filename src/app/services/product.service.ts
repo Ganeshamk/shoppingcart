@@ -227,12 +227,12 @@ export class ProductService {
       }
 
       if (status === 'dec') {
-        cartItems[index].quantity = cartItems[index].quantity - 1;
+        cartItems[index].quantity -= 1;
         if (cartItems[index].quantity === 0) {
           cartItems.splice(index, 1);
         }
       } else {
-        cartItems[index].quantity = cartItems[index].quantity + 1;
+        cartItems[index].quantity += 1;
       }
       localStorage.setItem('cartItems', JSON.stringify(cartItems));
       this.getCartItems$.next(cartItems);

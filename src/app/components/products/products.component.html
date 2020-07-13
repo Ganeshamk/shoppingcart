@@ -49,11 +49,11 @@
           Add to Cart
         </button>
         <div class="product-qty" *ngIf="product?.quantity > 0">
-          <button class="qty-btn qty-dec" (click)="changeQuantity(product, 'dec')">
+          <button class="qty-btn qty-dec" (click)="changeQuantity(product, 'dec', i)">
             <i class="fa fa-minus"></i>
           </button>
           <span class="product-quantity">{{product?.quantity}}</span>
-          <button class="qty-btn qty-inc" (click)="changeQuantity(product, 'inc')">
+          <button class="qty-btn qty-inc" (click)="changeQuantity(product, 'inc', i)">
             <i class="fa fa-plus"></i>
           </button>
         </div>
