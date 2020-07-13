@@ -216,8 +216,7 @@ export class ProductService {
 
   /* product change quantity */
   changeQuantity(product: any, status: any) {
-    let cartItems: any[] = [];
-    cartItems = JSON.parse(localStorage.getItem("cartItems")) ? JSON.parse(localStorage.getItem("cartItems")) : [];
+    let cartItems: any = JSON.parse(localStorage.getItem("cartItems"));
     let index = cartItems.findIndex(data => {
       return data.productId === product.productId;
     });
@@ -242,7 +241,7 @@ export class ProductService {
 
   /* remove cart item */
   removeCartItem(index: any) {
-    let cartItems: any[] = JSON.parse(localStorage.getItem("cartItems"));
+    let cartItems: any = JSON.parse(localStorage.getItem("cartItems"));
 
     if (index >= 0) {
       cartItems.splice(index, 1);

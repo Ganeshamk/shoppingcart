@@ -17,7 +17,7 @@ export class CartComponent implements OnInit {
   /* get all cart data */
   getCartData() {
     this.productService.getCartItems$.subscribe((cartItems: any) => {
-      if (cartItems) {
+      if (cartItems && cartItems.length > 0) {
         this.cartItems = cartItems;
         this.getTotalAmount();
       } else {

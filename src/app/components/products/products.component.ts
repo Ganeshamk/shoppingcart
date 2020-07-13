@@ -105,7 +105,7 @@ export class ProductsComponent implements OnInit {
   /* get cart items details  */
   getcartItems() {
     this.productService.getCartItems$.subscribe((cartItems: any) => {
-      if (cartItems) {
+      if (cartItems && cartItems.length > 0) {
         cartItems.forEach(item => {
           if (item) {
             let index = this.products.findIndex(data => {
