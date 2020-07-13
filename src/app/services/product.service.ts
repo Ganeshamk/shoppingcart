@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 
 export class ProductService {
-  getCartItems$ = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('cartItems')) ? JSON.parse(localStorage.getItem('cartItems')) : []);
+  getCartItems$ = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('cartItems')));
 
   products: any[] = [
     {

@@ -29,7 +29,7 @@ export class ProductDetailsComponent implements OnInit {
       if (product) {
         this.productDetails = product;
         this.productService.getCartItems$.subscribe((cartData: any) => {
-          if (cartData.length > 0) {
+          if (cartData) {
             this.cartItems = cartData;
             let index = this.findIndex();
             this.productDetails.quantity = this.cartItems[index].quantity;
