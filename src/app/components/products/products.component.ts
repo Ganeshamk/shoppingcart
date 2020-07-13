@@ -97,55 +97,45 @@ export class ProductsComponent implements OnInit {
           }
         }
       });
+      this.products = this.productsData;
       this.getcartItems();
     });
   }
 
   /* get cart items details  */
   getcartItems() {
-    this.productService.getCartItems().then((cartItems: any) => {
-      if (cartItems) {
+    this.productService.getCartItems$.subscribe((cartItems: any) => {
+      if (cartItems.length > 0) {
         cartItems.forEach(item => {
           if (item) {
-            let index = this.productsData.findIndex(data => {
+            let index = this.products.findIndex(data => {
               return data.productId === item.productId;
             });
 
             if (index >= 0) {
-              this.productsData[index].quantity = item.quantity;
+              this.products[index].quantity = item.quantity;
             }
           }
         });
         this.cartItems = cartItems;
+      } else {
+        this.products.forEach(product => {
+          if (product) {
+            product.quantity = 0;
+          }
+        });
       }
-      this.products = this.productsData;
     });
   }
 
   /* Add to cart  */
-  addToCart(product: any, index: number) {
-    this.products[index].quantity = 1;
-    this.cartItems.push(product);
-    localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
+  addToCart(product: any) {
+    this.productService.addToCart(product);
   }
 
   /* change product quantity */
-  changeQuantity(product: any, status: any, index: number) {
-    let cartDataIndex = this.cartItems.findIndex(data => {
-      return data.productId === product.productId;
-    });
-    if (status === 'dec') {
-      this.products[index].quantity -= 1;
-      if (this.products[index].quantity === 0) {
-        this.cartItems.splice(cartDataIndex, 1);
-      } else {
-        this.cartItems[cartDataIndex].quantity = this.products[index].quantity;
-      }
-    } else {
-      this.products[index].quantity += 1;
-      this.cartItems[cartDataIndex].quantity = this.products[index].quantity;
-    }
-    localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
+  changeQuantity(product: any, status: any) {
+    this.productService.changeQuantity(product, status);
   }
 
   /* goto product details page  */

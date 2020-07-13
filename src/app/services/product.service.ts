@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { promise } from 'protractor';
+import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 
 export class ProductService {
+  getCartItems$ = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('cartItems')));
+
   products: any[] = [
     {
       productId: 'INF001',
@@ -199,6 +202,53 @@ export class ProductService {
     return new Promise(resolve => {
       resolve(cartItems ? cartItems : false);
     });
+  }
+
+  /* get cart details */
+  addToCart(item: any) {
+    item.quantity += 1;
+    let cartItems: any[] = [];
+    cartItems = JSON.parse(localStorage.getItem("cartItems")) ? JSON.parse(localStorage.getItem("cartItems")) : [];
+    cartItems.push(item);
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    this.getCartItems$.next(cartItems);
+  }
+
+  /* product change quantity */
+  changeQuantity(product: any, status: any) {
+    let cartItems: any[] = [];
+    cartItems = JSON.parse(localStorage.getItem("cartItems")) ? JSON.parse(localStorage.getItem("cartItems")) : [];
+    let index = cartItems.findIndex(data => {
+      return data.productId === product.productId;
+    });
+
+    if (index >= 0) {
+      if (!cartItems[index].quantity) {
+        cartItems[index].quantity = 0;
+      }
+
+      if (status === 'dec') {
+        cartItems[index].quantity = cartItems[index].quantity - 1;
+        if (cartItems[index].quantity === 0) {
+          cartItems.splice(index, 1);
+        }
+      } else {
+        cartItems[index].quantity = cartItems[index].quantity + 1;
+      }
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+      this.getCartItems$.next(cartItems);
+    }
+  }
+
+  /* remove cart item */
+  removeCartItem(index: any) {
+    let cartItems: any[] = JSON.parse(localStorage.getItem("cartItems"));
+
+    if (index >= 0) {
+      cartItems.splice(index, 1);
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+      this.getCartItems$.next(cartItems);
+    }
   }
 
   /* scroll to top */

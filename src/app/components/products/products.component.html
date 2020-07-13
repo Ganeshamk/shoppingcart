@@ -45,15 +45,15 @@
           </div>
           <span class="category">{{product?.category}}</span>
         </div>
-        <button (click)="addToCart(product, i)" class="add-to-cart" *ngIf="product?.quantity <= 0">
+        <button (click)="addToCart(product)" class="add-to-cart" *ngIf="product?.quantity <= 0">
           Add to Cart
         </button>
         <div class="product-qty" *ngIf="product?.quantity > 0">
-          <button class="qty-btn qty-dec" (click)="changeQuantity(product, 'dec', i)">
+          <button class="qty-btn qty-dec" (click)="changeQuantity(product, 'dec')">
             <i class="fa fa-minus"></i>
           </button>
           <span class="product-quantity">{{product?.quantity}}</span>
-          <button class="qty-btn qty-inc" (click)="changeQuantity(product, 'inc', i)">
+          <button class="qty-btn qty-inc" (click)="changeQuantity(product, 'inc')">
             <i class="fa fa-plus"></i>
           </button>
         </div>

@@ -28,11 +28,13 @@ export class ProductDetailsComponent implements OnInit {
     this.productService.getProductDetailsById(productId).then(product => {
       if (product) {
         this.productDetails = product;
-        this.productService.getCartItems().then((cartData: any) => {
+        this.productService.getCartItems$.subscribe((cartData: any) => {
           if (cartData.length > 0) {
             this.cartItems = cartData;
             let index = this.findIndex();
             this.productDetails.quantity = this.cartItems[index].quantity;
+          } else {
+            this.productDetails.quantity = 0;
           }
         });
       }
@@ -41,9 +43,7 @@ export class ProductDetailsComponent implements OnInit {
 
   /* Add to cart  */
   addToCart() {
-    this.productDetails.quantity = 1;
-    this.cartItems.push(this.productDetails);
-    localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
+    this.productService.addToCart(this.productDetails);
   }
 
   /* find product position in the cart data  */
@@ -55,18 +55,6 @@ export class ProductDetailsComponent implements OnInit {
 
   /* change product quantity */
   changeQuantity(status: any) {
-    let cartDataIndex = this.findIndex();
-    if (status === 'dec') {
-      this.productDetails.quantity -= 1;
-      if (this.productDetails.quantity === 0) {
-        this.cartItems.splice(cartDataIndex, 1);
-      } else {
-        this.cartItems[cartDataIndex].quantity = this.productDetails.quantity;
-      }
-    } else {
-      this.productDetails.quantity += 1;
-      this.cartItems[cartDataIndex].quantity = this.productDetails.quantity;
-    }
-    localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
+    this.productService.changeQuantity(this.productDetails, status);
   }
 }
