@@ -1,35 +1,35 @@
-<div class="page-title">
-  <label>Products</label>
-</div>
-
-<div class="row">
-  <div class="search-block">
-    <input class="serachbox" type="text" placeholder="Enter product name..." [(ngModel)]="searchText"
-      (ngModelChange)="searchTextChange($event)" />
-    <span class="clear" (click)="clearSearchText()" *ngIf="searchText"><i class="fa fa-times"></i></span>
-  </div>
-  <div class="spacer"></div>
-  <div class="filter">
-    <span class="" (clickOutside)="onClickedOutside($event)">
-      <button class="sort-btn" (click)="isSort = !isSort">
-        Sort <i class="fa" [ngClass]="isSort ? 'fa-arrow-down' : 'fa-arrow-up'"></i>
-      </button>
-      <button class="filter-btn" (click)="filterBtn()">
-        <i class="fa fa-filter"></i>
-        <i class="active" *ngIf="isApplyFilter"></i>
-      </button>
-      <div class="categories" *ngIf="isDispalyCategories">
-        <label class="category-title">Categories</label>
-        <label class="row category-item" *ngFor="let category of categories">
-          <input type="checkbox" [(ngModel)]="category.status" (change)="applyFilter()">
-          <span class="category-text">{{category?.name}}</span>
-        </label>
-      </div>
-    </span>
-  </div>
-</div>
-
 <div class="products-block">
+  <div class="page-title">
+    <label>Products</label>
+  </div>
+
+  <div class="row">
+    <div class="search-block">
+      <input class="serachbox" type="text" placeholder="Enter product name..." [(ngModel)]="searchText"
+        (ngModelChange)="searchTextChange($event)" />
+      <span class="clear" (click)="clearSearchText()" *ngIf="searchText"><i class="fa fa-times"></i></span>
+    </div>
+    <div class="spacer"></div>
+    <div class="filter">
+      <span class="" (clickOutside)="onClickedOutside($event)">
+        <button class="sort-btn" (click)="isSort = !isSort">
+          Sort <i class="fa" [ngClass]="isSort ? 'fa-arrow-down' : 'fa-arrow-up'"></i>
+        </button>
+        <button class="filter-btn" (click)="filterBtn()">
+          <i class="fa fa-filter"></i>
+          <i class="active" *ngIf="isApplyFilter"></i>
+        </button>
+        <div class="categories" *ngIf="isDispalyCategories">
+          <label class="category-title">Categories</label>
+          <label class="row category-item" *ngFor="let category of categories">
+            <input type="checkbox" [(ngModel)]="category.status" (change)="applyFilter()">
+            <span class="category-text">{{category?.name}}</span>
+          </label>
+        </div>
+      </span>
+    </div>
+  </div>
+
   <div class="row" *ngIf="products?.length > 0; else noDataFound">
     <div class="products" *ngFor="let product of products | orderBy: 'name': isSort ? 'asc' : 'desc';let i = index ">
       <div class="product-card">

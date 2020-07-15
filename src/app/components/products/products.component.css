@@ -19,6 +19,11 @@
   cursor: pointer;
 }
 
+.products-block {
+  width: 90%;
+  margin: auto;
+}
+
 .products {
   flex: 0 0 25%;
   max-width: 25%;
@@ -91,10 +96,13 @@
 
 .product-img {
   transition: transform .5s ease;
+  width: 60%;
 }
 
 .product-img-block {
   overflow: hidden;
+  width: 100%;
+  text-align: center;
 }
 
 .product-qty {
