@@ -232,3 +232,49 @@
   padding: 3px 0 0 5px;
   font-size: 13px;
 }
+
+.products-carosal {
+  display: flex;
+  /* max-width: 100%; */
+  overflow: hidden;
+  position: relative;
+}
+
+.carosal {
+  transition: transform .6s ease,
+    -webkit-transform .6s ease;
+}
+
+.carosal-btn {
+  background: #2075d2;
+  color: #fff;
+  padding: 7px 10px;
+  border: none;
+  border-radius: 4px;
+  z-index: 9999;
+}
+
+.left {
+  position: absolute;
+  left: -15px;
+  top: 50%;
+}
+
+.right {
+  position: absolute;
+  right: -15px;
+  top: 50%;
+}
+
+.carosal-block {
+  position: relative;
+}
+
+.top-sold {
+  width: 100%;
+  text-align: center;
+  color: #1b348f;
+  display: block;
+  font-size: 23px;
+  font-weight: 800;
+}

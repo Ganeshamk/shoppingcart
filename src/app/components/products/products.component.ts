@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, HostListener, HostBinding } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { Router } from '@angular/router';
 @Component({
@@ -15,6 +15,10 @@ export class ProductsComponent implements OnInit {
   isDispalyCategories: boolean = false;
   searchText: any;
   isSort: boolean = true;
+  position: number = 0;
+  @ViewChild('container', { static: true }) container: ElementRef;
+  parentWidth: any;
+  childrenWidth: any;
 
   constructor(private productService: ProductService, private router: Router) { }
 
@@ -146,5 +150,47 @@ export class ProductsComponent implements OnInit {
   /* goto product details page  */
   gotoProductDetails(product: any) {
     this.router.navigate(['productDetails', product.productId]);
+  }
+
+  ngAfterViewChecked(): void {
+    // this.resizeWorks();
+  }
+
+  next() {
+    this.parentWidth = this.container.nativeElement.offsetWidth;
+    this.childrenWidth = this.container.nativeElement.children[0].offsetWidth;
+    // console.log(this.parentWidth);
+    // console.log(this.childrenWidth);
+    // console.log(this.position);
+    // console.log(this.products.length * this.childrenWidth);
+    if (this.parentWidth !== (this.products.length * this.childrenWidth)) {
+      if (this.position <= -((this.products.length * this.childrenWidth) - this.parentWidth)) {
+        this.position = 0;
+      } else {
+        this.position -= this.childrenWidth;
+      }
+    }
+  }
+
+  prev() {
+    this.parentWidth = this.container.nativeElement.offsetWidth;
+    this.childrenWidth = this.container.nativeElement.children[0].offsetWidth;
+    if (this.parentWidth !== ((this.products.length * this.childrenWidth) - this.parentWidth)) {
+      if (this.position >= 0) {
+        this.position = -((this.products.length * this.childrenWidth) - this.parentWidth);
+      } else {
+        this.position += this.childrenWidth;
+      }
+    }
+  }
+
+  @HostListener('window:resize', ['$event.target'])
+  onResize() {
+    this.resizeWorks();
+  }
+
+  private resizeWorks(): void {
+    this.parentWidth = this.container.nativeElement.offsetWidth;
+    this.childrenWidth = this.container.nativeElement.children[0].offsetWidth;
   }
 }

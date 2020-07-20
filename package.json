@@ -19,6 +19,7 @@
     "@angular/platform-browser": "~8.2.11",
     "@angular/platform-browser-dynamic": "~8.2.11",
     "@angular/router": "~8.2.11",
+    "angular-http-server": "^1.9.0",
     "font-awesome": "^4.7.0",
     "ng-click-outside": "^6.0.0",
     "ng2-tooltip-directive": "^2.9.20",

@@ -30,6 +30,51 @@
     </div>
   </div>
 
+  <div class="carosal-block">
+    <label class="top-sold">Top Sold Problems</label>
+    <button class="left carosal-btn" (click)="prev()">
+      <i class="fa fa-arrow-left"></i>
+    </button>
+
+    <button class="right carosal-btn" (click)="next()">
+      <i class="fa fa-arrow-right"></i>
+    </button>
+
+    <div class="products-carosal" #container>
+      <div class="products carosal" [style.transform]="'translateX('+ position +'px)'" (swipe)="onSwipe($event)"
+        *ngFor="let product of products | orderBy: 'name': isSort ? 'asc' : 'desc';let i = index ">
+        <div class="product-card">
+          <div class="product-img-block" (click)="gotoProductDetails(product)">
+            <img class="product-img" src={{product?.imgUrl}} width="100%">
+          </div>
+          <div class="product-content">
+            <div tooltip={{product?.name}} placement="bottom" show-delay="500">
+              <strong>Name</strong>: {{product?.name | ellipsisPipe:15}}
+            </div>
+            <div>
+              <strong>Price</strong>: {{product?.price | currency}}
+            </div>
+            <span class="category">{{product?.category}}</span>
+          </div>
+          <button (click)="addToCart(product)" class="add-to-cart" *ngIf="product?.quantity <= 0">
+            Add to Cart
+          </button>
+          <div class="product-qty" *ngIf="product?.quantity > 0">
+            <button class="qty-btn qty-dec" (click)="changeQuantity(product, 'dec', i)">
+              <i class="fa fa-minus"></i>
+            </button>
+            <span class="product-quantity">{{product?.quantity}}</span>
+            <button class="qty-btn qty-inc" (click)="changeQuantity(product, 'inc', i)">
+              <i class="fa fa-plus"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
   <div class="row" *ngIf="products?.length > 0; else noDataFound">
     <div class="products" *ngFor="let product of products | orderBy: 'name': isSort ? 'asc' : 'desc';let i = index ">
       <div class="product-card">
