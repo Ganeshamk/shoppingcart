@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, HostListener, HostBinding } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, HostListener, HostBinding, NgZone } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { Router } from '@angular/router';
 @Component({
@@ -20,10 +20,17 @@ export class ProductsComponent implements OnInit {
   parentWidth: any;
   childrenWidth: any;
 
-  constructor(private productService: ProductService, private router: Router) { }
+  constructor(private productService: ProductService,
+    private ngZone: NgZone,
+    private router: Router) { }
 
   ngOnInit() {
     this.getProducts();
+    window.onresize = (e) => {
+      this.ngZone.run(() => {
+        this.resizeWorks();
+      });
+    };
   }
 
   /* hide categories by clicking outside the categories block */
@@ -174,11 +181,6 @@ export class ProductsComponent implements OnInit {
         this.position += this.childrenWidth;
       }
     }
-  }
-
-  @HostListener('window:resize', ['$event.target'])
-  onResize() {
-    this.resizeWorks();
   }
 
   private resizeWorks(): void {

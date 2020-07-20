@@ -73,8 +73,6 @@
     </div>
   </div>
 
-
-
   <div class="row" *ngIf="products?.length > 0; else noDataFound">
     <div class="products" *ngFor="let product of products | orderBy: 'name': isSort ? 'asc' : 'desc';let i = index ">
       <div class="product-card">

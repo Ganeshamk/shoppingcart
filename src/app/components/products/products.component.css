@@ -252,6 +252,7 @@
   border: none;
   border-radius: 4px;
   z-index: 9999;
+  outline: none;
 }
 
 .left {
