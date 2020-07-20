@@ -152,17 +152,9 @@ export class ProductsComponent implements OnInit {
     this.router.navigate(['productDetails', product.productId]);
   }
 
-  ngAfterViewChecked(): void {
-    // this.resizeWorks();
-  }
-
   next() {
     this.parentWidth = this.container.nativeElement.offsetWidth;
     this.childrenWidth = this.container.nativeElement.children[0].offsetWidth;
-    // console.log(this.parentWidth);
-    // console.log(this.childrenWidth);
-    // console.log(this.position);
-    // console.log(this.products.length * this.childrenWidth);
     if (this.parentWidth !== (this.products.length * this.childrenWidth)) {
       if (this.position <= -((this.products.length * this.childrenWidth) - this.parentWidth)) {
         this.position = 0;
