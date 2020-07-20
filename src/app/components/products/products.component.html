@@ -41,7 +41,7 @@
     </button>
 
     <div class="products-carosal" #container>
-      <div class="products carosal" [style.transform]="'translateX('+ position +'px)'" (swipe)="onSwipe($event)"
+      <div class="products carosal" [style.transform]="'translateX('+ position +'px)'"
         *ngFor="let product of products | orderBy: 'name': isSort ? 'asc' : 'desc';let i = index ">
         <div class="product-card">
           <div class="product-img-block" (click)="gotoProductDetails(product)">
